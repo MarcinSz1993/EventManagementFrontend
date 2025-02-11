@@ -1,0 +1,104 @@
+<div class="edit-event-container">
+  <h2 class="section-title">Edit Event</h2>
+  <form class="event-form" (ngSubmit)="updateEvent()" #eventForm="ngForm">
+    <div class="form-group">
+      <label for="eventName">Event Name</label>
+      <small class="current-value">Current: {{eventToUpdate.eventName}}</small>
+      <input
+        type="text"
+        id="eventName"
+        name="eventName"
+        class="form-control"
+        [(ngModel)]="updateEventRequest.eventName"
+        minlength="3"
+        placeholder="Set new event name."
+      />
+    </div>
+    <div class="form-group">
+      <label for="eventDescription">Event Description</label>
+      <small class="current-value">Current: {{eventToUpdate.eventDescription}}</small>
+      <textarea
+        id="eventDescription"
+        name="eventDescription"
+        class="form-control"
+        placeholder="Set new description."
+        [(ngModel)]="updateEventRequest.eventDescription"
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label for="location">Location</label>
+      <small class="current-value">Current: {{eventToUpdate.eventLocation}}</small>
+      <input
+        type="text"
+        id="location"
+        name="location"
+        class="form-control"
+        placeholder="Set new location."
+        [(ngModel)]="updateEventRequest.location"
+      />
+    </div>
+    <div class="form-group">
+      <label for="maxAttendees">Max Attendees</label>
+      <small class="current-value">Current: {{ eventToUpdate.maxAttendees }}</small>
+      <input
+        type="number"
+        id="maxAttendees"
+        name="maxAttendees"
+        class="form-control"
+        [(ngModel)]="updateEventRequest.maxAttendees"
+        min="1"
+        placeholder="Set new max attendees."
+      />
+    </div>
+    <div class="form-group">
+      <label for="eventDate">Event Date</label>
+      <small class="current-value">Current: {{ eventToUpdate.eventDate }}</small>
+      <input
+        type="date"
+        id="eventDate"
+        name="eventDate"
+        class="form-control"
+        placeholder="Set new date."
+        [(ngModel)]="updateEventRequest.eventDate"
+      />
+    </div>
+    <div class="form-group">
+      <label for="ticketPrice">Ticket Price (€)</label>
+      <small class="current-value">Current: {{ eventToUpdate.ticketPrice }}</small>
+      <input
+        type="number"
+        id="ticketPrice"
+        name="ticketPrice"
+        class="form-control"
+        [(ngModel)]="updateEventRequest.ticketPrice"
+        min="0"
+        step="1"
+        placeholder="Set new price."
+      />
+    </div>
+    <div class="form-group">
+      <label for="eventTarget">Event Target</label>
+      <select
+        id="eventTarget"
+        name="eventTarget"
+        class="form-control"
+        [(ngModel)]="updateEventRequest.eventTarget"
+      >
+        <option value="updateEventRequest.eventTarget" selected>Select Target Audience</option>
+        <option [value]="updateEventRequest.eventTarget" selected>
+          Set new target
+        </option>
+        <option *ngFor="let target of eventTargets" [value]="target">{{ target }}</option>
+      </select>
+    </div>
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary" [disabled]="!eventForm.form.valid">
+        Save Changes
+      </button>
+
+      <button type="button" class="btn btn-secondary" [routerLink]="['/created-events']">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

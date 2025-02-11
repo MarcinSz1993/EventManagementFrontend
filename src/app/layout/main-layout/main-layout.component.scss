@@ -1,0 +1,36 @@
+.menu-container {
+  background-color: #f8f9fa; /* Jasne tło */
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-item a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: 500;
+}
+
+.menu-item a.active-link {
+  color: #0056b3;
+  font-weight: bold;
+}
+
+.user-info {
+  margin-left: auto;
+}
+
+.form-control {
+  width: 200px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}

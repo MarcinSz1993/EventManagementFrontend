@@ -1,0 +1,92 @@
+<div class="create-event-container">
+  <h2 class="section-title">Create New Event</h2>
+  <form class="event-form" (ngSubmit)="createNewEvent()" #eventForm="ngForm">
+    <div class="form-group">
+      <label for="eventName">Event Name</label>
+      <input
+        type="text"
+        id="eventName"
+        name="eventName"
+        class="form-control"
+        [(ngModel)]="createEventRequest.eventName"
+        required
+        minlength="3"
+      />
+    </div>
+    <div class="form-group">
+      <label for="eventDescription">Event Description</label>
+      <textarea
+        id="eventDescription"
+        name="eventDescription"
+        class="form-control"
+        [(ngModel)]="createEventRequest.eventDescription"
+        required
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label for="location">Location</label>
+      <input
+        type="text"
+        id="location"
+        name="location"
+        class="form-control"
+        [(ngModel)]="createEventRequest.location"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="maxAttendees">Max Attendees</label>
+      <input
+        type="number"
+        id="maxAttendees"
+        name="maxAttendees"
+        class="form-control"
+        [(ngModel)]="createEventRequest.maxAttendees"
+        required
+        min="1"
+      />
+    </div>
+    <div class="form-group">
+      <label for="eventDate">Event Date</label>
+      <input
+        type="date"
+        id="eventDate"
+        name="eventDate"
+        class="form-control"
+        [(ngModel)]="createEventRequest.eventDate"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="ticketPrice">Ticket Price (€)</label>
+      <input
+        type="number"
+        id="ticketPrice"
+        name="ticketPrice"
+        class="form-control"
+        [(ngModel)]="createEventRequest.ticketPrice"
+        required
+        min="0"
+        step="1"
+      />
+    </div>
+    <div class="form-group">
+      <label for="eventTarget">Event Target</label>
+      <select
+        id="eventTarget"
+        name="eventTarget"
+        class="form-control"
+        [(ngModel)]="createEventRequest.eventTarget"
+        required
+      >
+        <option value="" disabled>Select Target Audience</option>
+        <option *ngFor="let target of eventTargets" [value]="target">{{ target }}</option>
+      </select>
+    </div>
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary" [disabled]="!eventForm.form.valid">Create Event</button>
+      <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+</div>
+

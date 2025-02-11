@@ -1,0 +1,34 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+
+body {
+  background: linear-gradient(to bottom, #d9e2ec, #d9e2ec);
+  min-height: 100vh;
+  margin: 100px;
+  font-family: 'Arial', sans-serif;
+  display: block;
+}
+
+.container {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.menu-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: #f8f9fa;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 10px 20px;
+}
+
+.content {
+  margin-top: 100px;
+  display: block;
+}
+

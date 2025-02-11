@@ -1,0 +1,38 @@
+<div class="created-events-container">
+  <div class="header">
+    <h2 class="section-title">Your Created Events</h2>
+    <button class="btn btn-create" [routerLink]="['/create-new-event']">Create New Event</button>
+  </div>
+
+  <div *ngIf="createdEvents && createdEvents.length > 0; else noEvents">
+    <div class="events-grid">
+      <div *ngFor="let event of createdEvents" class="event-card">
+        <div class="event-header">
+          <h3>{{ event.eventName }}</h3>
+          <p class="event-status" [ngClass]="{
+            'completed': event.eventStatus === 'COMPLETED',
+            'active': event.eventStatus === 'ACTIVE',
+            'full': event.eventStatus === 'FULL',
+            'cancelled': event.eventStatus === 'CANCELLED'
+          }">{{ event.eventStatus }}</p>
+        </div>
+        <p class="event-description">{{ event.eventDescription }}</p>
+        <p><strong>Date:</strong> {{ event.eventDate | date:"longDate"}}</p>
+        <p><strong>Location:</strong> {{ event.eventLocation }}</p>
+        <p><strong>Max Attendees:</strong> {{ event.maxAttendees }}</p>
+        <p><strong>Ticket Price:</strong> €{{ event.ticketPrice }}</p>
+        <div class="event-actions">
+          <button *ngIf="event.eventStatus === 'ACTIVE' || event.eventStatus === 'FULL'" class="btn btn-primary" [routerLink]="['/edit-event', event.id]">Edit</button>
+          <button *ngIf="event.eventStatus === 'ACTIVE' || event.eventStatus === 'FULL'" class="btn btn-danger" (click)="deleteEvent(event.id)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noEvents>
+    <div class="no-events-message">
+      <h3>YOU HAVE NOT CREATED EVENTS YET</h3>
+    </div>
+  </ng-template>
+</div>
+

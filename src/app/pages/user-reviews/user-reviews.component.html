@@ -1,0 +1,31 @@
+<div class="written-reviews-container">
+  <div class="reviews-header">
+    <h2>Reviews You Have Written</h2>
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="!writtenReviewsResponse.content || writtenReviewsResponse.content.length === 0" class="no-reviews">
+    <p class="text-muted">You haven't written any reviews yet.</p>
+  </div>
+
+  <div *ngIf="writtenReviewsResponse.content && writtenReviewsResponse.content.length > 0" class="reviews-grid">
+    <div *ngFor="let review of writtenReviewsResponse.content" class="review-card">
+      <h3 class="event-name">{{ review.eventName }}</h3>
+      <div class="review-degree">
+        <ng-container *ngFor="let star of [].constructor(review.degree)">
+          <i class="fas fa-star"></i>
+        </ng-container>
+      </div>
+      <p class="review-content">"{{ review.content }}"</p>
+    </div>
+
+    <div *ngIf="totalPages > 0" class="pagination-container">
+      <button class="pagination-button" (click)="previousPage()" [disabled]="currentPage === 0">Previous</button>
+      <span class="pagination-info">Page {{ currentPage + 1 }} / {{ totalPages }}</span>
+      <button class="pagination-button" (click)="nextPage()" [disabled]="currentPage >= totalPages - 1">Next</button>
+    </div>
+  </div>
+</div>

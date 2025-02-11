@@ -1,0 +1,25 @@
+<div class="reviews-page">
+  <nav class="menu-container">
+    <button type="button" class="menu-button" [routerLink]="['/reviews/write-review']">
+      <i class="fas fa-pen"></i> Write a Review
+    </button>
+    <button type="button" class="menu-button" [routerLink]="['/reviews/user-reviews']">
+      <i class="fas fa-book"></i> See your reviews
+    </button>
+    <button type="button" class="menu-button" [routerLink]="['/reviews/all-reviews']">
+      <i class="fas fa-search"></i> See Other Reviews
+    </button>
+    <button type="button" class="menu-button" [routerLink]="['/reviews/received-reviews']">
+      <i class="fas fa-user"></i> See Reviews About Your Events
+    </button>
+    <button type="button" class="menu-button" [routerLink]="['/events']">
+      <i class="fas fa-arrow-alt-circle-left"></i> Back to main page
+    </button>
+    <button type="button" class="menu-button" (click)="logout()">
+      <i class="fas fa-door-open"></i> Logout
+    </button>
+  </nav>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,0 +1,167 @@
+.event-card {
+  max-width: 800px;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  position: relative;
+  margin: 80px auto 20px;
+  text-align: center;
+}
+
+.event-status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.event-status.completed {
+  background-color:black ;
+}
+
+.event-status.upcoming {
+  background-color: #4caf50;
+}
+
+.event-status.full {
+  background-color: orange;
+}
+
+.event-status.cancelled {
+  background-color: red;
+}
+
+.event-header {
+  margin-top: 5px;
+}
+
+.event-header h1 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+}
+
+.event-details {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.event-details p {
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+.organiser-info {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.organiser-info h2 {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.organiser-info p {
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+.participants {
+  margin-top: 30px;
+}
+
+.participants h2 {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.participants ul {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+.participants li {
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .participants ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .participants ul {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.action-buttons .btn {
+  flex: 1;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.action-buttons .btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.action-buttons .btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.action-buttons .btn-secondary {
+  background-color: #ff9800;
+  color: white;
+}
+
+.action-buttons .btn-secondary:hover {
+  background-color: #f57c00;
+}
+
+.action-buttons .btn-success {
+  background-color: #28a745;
+  color: white;
+}
+
+.action-buttons .btn-success:hover {
+  background-color: #218838;
+}

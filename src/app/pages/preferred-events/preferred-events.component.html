@@ -1,0 +1,42 @@
+<div *ngIf="preferredEvents.content?.length; else noEvents" class="preferred-events-container">
+  <h2 class="title">Events based on your preferences</h2>
+  <table class="table table-hover table-bordered">
+    <thead class="table-light">
+    <tr>
+      <th>Event Name</th>
+      <th>Description</th>
+      <th>Location</th>
+      <th>Date</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let event of preferredEvents.content">
+      <td>
+        <a [routerLink]="['/single-event']" [queryParams]="{eventName:event.eventName}" class="event-link">
+          {{ event.eventName }}
+        </a>
+      </td>
+      <td>{{ event.eventDescription }}</td>
+      <td>{{ event.eventLocation }}</td>
+      <td>{{ event.eventDate | date:'longDate' }}</td>
+      <td class="text-center">
+        <button class="btn btn-primary btn-sm" (click)="joinEvent(event.eventName)">Join</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="pagination-container">
+    <button type="button" class="pagination-button" (click)="previousPage()" [disabled]="currentPage === 0">Previous</button>
+
+    <span class="pagination-info">Page {{currentPage + 1}} / {{totalPages}}</span>
+
+    <button type="button" class="pagination-button" (click)="nextPage()" [disabled]="currentPage >= totalPages - 1">Next</button>
+  </div>
+</div>
+
+<ng-template #noEvents>
+  <div class="no-events text-center">
+    <p class="text-muted">There are no active events based on your preferences.</p>
+  </div>
+</ng-template>

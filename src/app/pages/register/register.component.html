@@ -1,0 +1,65 @@
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+  <div class="card shadow-sm p-4 w-100" style="max-width: 500px;">
+    <h3 class="text-center mb-4">Create an account</h3>
+    <hr>
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label for="firstName" class="form-label">First name:</label>
+        <input [(ngModel)]="registerRequest.firstName" type="text" class="form-control" id="firstName" placeholder="Enter your first name">
+      </div>
+      <div class="col-md-6">
+        <label for="lastName" class="form-label">Last name:</label>
+        <input [(ngModel)]="registerRequest.lastName" type="text" class="form-control" id="lastName" placeholder="Enter your last name">
+      </div>
+    </div>
+
+    <div class="mb-3 mt-3">
+      <label for="username" class="form-label">Your username:</label>
+      <input [(ngModel)]="registerRequest.username" type="text" class="form-control" id="username" placeholder="Enter your username">
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Your email:</label>
+      <input [(ngModel)]="registerRequest.email" type="email" class="form-control" id="email" placeholder="Enter your email">
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Your password:</label>
+      <input [(ngModel)]="registerRequest.password" type="password" class="form-control" id="password" placeholder="Enter your password">
+    </div>
+
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label for="accountNumber" class="form-label">Account number:</label>
+        <input [(ngModel)]="registerRequest.accountNumber" type="text" class="form-control" id="accountNumber" placeholder="Enter your account number">
+      </div>
+      <div class="col-md-6">
+        <label for="phoneNumber" class="form-label">Phone number:</label>
+        <input [(ngModel)]="registerRequest.phoneNumber" type="text" class="form-control" id="phoneNumber" placeholder="Enter your phone number">
+      </div>
+    </div>
+
+    <div class="mb-3 mt-3">
+      <label for="birthDate" class="form-label">Date of birth:</label>
+      <input
+        type="date"
+        id="birthDate"
+        name="birthDate"
+        class="form-control"
+        placeholder="YYYY-MM-DD"
+        [(ngModel)]="registerRequest.birthDate"
+      />
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center">
+      <button (click)="register()" type="button" class="btn btn-primary w-100 me-3">
+        <em class="fa fa-user-plus"></em>&nbsp;Create an account
+      </button>
+      <div class="text-center">
+        Already have an account?&nbsp;
+        <button (click)="backToLoginPage()" type="button" class="btn btn-link p-0">
+          Log in
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

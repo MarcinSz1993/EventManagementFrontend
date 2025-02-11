@@ -1,0 +1,44 @@
+<div class="event-card">
+  <div class="event-status" [ngClass]="{
+  'completed': foundEvent.eventStatus === 'COMPLETED',
+  'upcoming': foundEvent.eventStatus === 'ACTIVE',
+  'full': foundEvent.eventStatus === 'FULL',
+  'cancelled': foundEvent.eventStatus === 'CANCELLED'
+}">
+    {{ foundEvent.eventStatus | uppercase }}
+  </div>
+
+  <div class="event-header">
+    <h1>{{ foundEvent.eventName }}</h1>
+  </div>
+
+  <div class="event-details">
+    <p><strong>Description:</strong> {{ foundEvent.eventDescription }}</p>
+    <p><strong>Location:</strong> {{ foundEvent.eventLocation }}</p>
+    <p><strong>Date:</strong> {{ foundEvent.eventDate | date: 'longDate' }}</p>
+    <p><strong>Max Attendees:</strong> {{ foundEvent.maxAttendees }}</p>
+    <p><strong>Ticket Price:</strong> {{ foundEvent.ticketPrice | currency: 'EUR' }}</p>
+    <p><strong>Target Audience:</strong> {{ foundEvent.eventTarget }}</p>
+  </div>
+
+  <div class="organiser-info">
+    <h2>Organiser Information</h2>
+    <p><strong>Name:</strong> {{ foundEvent.organiser?.firstName }} {{ foundEvent.organiser?.lastName }}</p>
+    <p><strong>Username:</strong> {{ foundEvent.organiser?.userName }}</p>
+    <p><strong>Email:</strong> {{ foundEvent.organiser?.email }}</p>
+    <p><strong>Phone:</strong> {{ foundEvent.organiser?.phoneNumber }}</p>
+  </div>
+
+  <div *ngIf="foundEvent.participants?.length" class="participants">
+    <h2>Participants</h2>
+    <ul>
+      <li *ngFor="let participant of foundEvent.participants">{{ participant?.username }}</li>
+    </ul>
+  </div>
+
+  <div class="action-buttons">
+    <button class="btn btn-primary" (click)="joinEvent(foundEvent.eventName)">Join</button>
+    <button class="btn btn-secondary" (click)="checkWeather(foundEvent.id)">Check Weather</button>
+    <button class="btn btn-success" (click)="buyTicket()">Buy Ticket</button>
+  </div>
+</div>

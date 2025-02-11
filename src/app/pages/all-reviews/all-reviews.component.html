@@ -1,0 +1,33 @@
+<div class="reviews-container">
+  <div class="reviews-header">
+    <h2>All reviews about all events:</h2>
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="allReviewsResponse.content" class="reviews-row">
+    <div *ngFor="let review of allReviewsResponse.content" class="review-card">
+      <h3 class="event-name">{{ review.eventName }}</h3>
+      <div class="review-degree">
+        <ng-container *ngFor="let star of [].constructor(review.degree)">
+          <i class="fas fa-star"></i>
+        </ng-container>
+      </div>
+      <p class="review-content">"{{ review.content }}"</p>
+      <p class="review-author">- {{ review.reviewer }}</p>
+    </div>
+    <!-- PAGINATION -->
+    <div class="pagination-container">
+      <button class="pagination-button" (click)="previousPage()" [disabled]="currentPage === 0">Previous</button>
+
+      <span class="pagination-info">Page {{currentPage + 1}} / {{totalPages}}</span>
+
+      <button class="pagination-button" (click)="nextPage()" [disabled]="currentPage >= totalPages - 1">Next</button>
+    </div>
+  </div>
+</div>
+
+
+

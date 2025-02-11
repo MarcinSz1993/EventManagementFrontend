@@ -1,0 +1,41 @@
+<div class="upcoming-events-container">
+  <h1 class="title">Your Upcoming Events</h1>
+
+  <table *ngIf="userJoinedEvents.content?.length" class="table table-hover table-bordered">
+    <thead class="table-header">
+    <tr>
+      <th>Event Name</th>
+      <th>Description</th>
+      <th>Location</th>
+      <th>Date</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let event of userJoinedEvents.content">
+      <td [routerLink]="['/single-event']" [queryParams]="{eventName:event.eventName}" class="event-link">{{ event.eventName }}</td>
+      <td>{{ event.eventDescription }}</td>
+      <td class="text-center">{{ event.eventLocation }}</td>
+      <td class="text-center">{{ event.eventDate | date: 'longDate' }}</td>
+      <td [ngClass]="{'status-full': event.eventStatus === 'FULL',
+      'status-active': event.eventStatus === 'ACTIVE'}">{{ event.eventStatus }}</td>
+      <td><button class="leave-button" type="button" (click)="leaveEvent(event.id)">Leave event</button></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="userJoinedEvents.content?.length" class="pagination-container">
+    <button type="button" class="pagination-button" (click)="previousPage()" [disabled]="currentPage === 0">Previous</button>
+
+    <span class="pagination-info">Page {{currentPage + 1}} / {{totalPages}}</span>
+
+    <button class="pagination-button" (click)="nextPage()" [disabled]="currentPage === totalPages - 1">Next</button>
+  </div>
+
+  <div *ngIf="userJoinedEvents.content?.length === 0" class="no-data">
+    You have not joined any events yet.
+  </div>
+</div>
+<div class="events-container"></div>
+

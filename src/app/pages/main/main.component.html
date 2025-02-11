@@ -1,0 +1,37 @@
+<nav class="menu-container d-flex align-items-center justify-content-between">
+  <ul class="menu d-flex gap-3 align-items-center m-0">
+    <li class="menu-item">
+      <a routerLink="/events" routerLinkActive="active-link">Upcoming Events</a>
+    </li>
+    <li class="menu-item">
+      <a routerLink="/preferred-events" routerLinkActive="active-link">Recommended for You</a>
+    </li>
+    <li class="menu-item">
+      <a routerLink="/all-events" routerLinkActive="active-link">Event Catalog</a>
+    </li>
+    <li class="menu-item">
+      <a routerLink="/created-events" routerLinkActive="active-link">Organized by You</a>
+    </li>
+    <li class="menu-item">
+      <a routerLink="/tickets" routerLinkActive="active-link">My tickets</a>
+    </li>
+    <li class="menu-item">
+      <a routerLink="/reviews" routerLinkActive="active-link">Reviews</a>
+    </li>
+    <li class="menu-item">
+      <form class="d-flex gap-2 align-items-center" role="search">
+        <input name="eventName" [(ngModel)]="eventName" class="form-control" type="text" placeholder="Find event" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit" (click)="findEvent()">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+    </li>
+  </ul>
+  <div class="user-info d-flex gap-2 align-items-center">
+    <span class="welcome">Welcome</span>
+    <span class="username">{{username}}</span>
+    <button class="btn btn-link" type="button" (click)="logout()">
+      <i class="fas fa-door-open"></i>
+    </button>
+  </div>
+</nav>

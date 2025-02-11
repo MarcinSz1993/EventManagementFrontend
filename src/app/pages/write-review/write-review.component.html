@@ -1,0 +1,25 @@
+<div class="write-review-container">
+  <h2>Write a Review</h2>
+  <label for="event">Select an event:</label>
+  <select id="event" [(ngModel)]="writeReviewRequest.eventName">
+    <option *ngIf="joinedEvents.content?.length === 0" [value]="null" disabled selected>No completed events</option>
+    <option  *ngFor="let event of joinedEvents.content" [value]="event.eventName">
+      {{ event.eventName }}
+    </option>
+  </select>
+
+  <label>Rating:</label>
+  <div class="rating">
+    <i *ngFor="let star of starsArray"
+       class="fas fa-star"
+       [class.filled]="star <= degree"
+       (click)="setRating(star)">
+    </i>
+  </div>
+
+  <label for="reviewContent">Your Review:</label>
+  <textarea id="reviewContent" [(ngModel)]="writeReviewRequest.content" maxlength="200" placeholder="Write your review here..."></textarea>
+
+  <button class="submit-review-button" (click)="submitReview()">Submit Review</button>
+
+</div>

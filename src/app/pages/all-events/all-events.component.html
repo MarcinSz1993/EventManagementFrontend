@@ -1,0 +1,53 @@
+<h2 class="title">Feel free to join the event you want or click on an event name to view more details.</h2>
+
+<div class="table-container">
+  <table class="event-table">
+    <thead>
+    <tr>
+      <th>Event name</th>
+      <th style="width: 250px;">Description</th>
+      <th>Date</th>
+      <th>Location</th>
+      <th>Status</th>
+      <th>Ticket price</th>
+      <th>Organiser</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let event of eventResponse.content">
+      <td>
+        <a [routerLink]="['/single-event']" [queryParams]="{eventName: event.eventName}" class="event-link">
+          {{ event.eventName }}
+        </a>
+      </td>
+      <td class="event-description">{{ event.eventDescription }}</td>
+      <td>{{ event.eventDate | date: 'longDate' }}</td>
+      <td>{{ event.eventLocation }}</td>
+      <td>
+          <span class="status-badge" [ngClass]="{
+            'status-active': event.eventStatus === 'ACTIVE',
+            'status-completed': event.eventStatus === 'COMPLETED',
+            'status-cancelled': event.eventStatus === 'CANCELLED',
+            'status-full': event.eventStatus === 'FULL'
+          }">
+            {{ event.eventStatus }}
+          </span>
+      </td>
+      <td>{{ event.ticketPrice | currency: 'EUR' }}</td>
+      <td>{{ event.organiser?.firstName }} {{ event.organiser?.lastName }}</td>
+      <td>
+        <button class="btn-join" (click)="joinEvent(event.eventName)">Join</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Paginacja -->
+<div class="pagination-container">
+  <button type="button" class="pagination-button" (click)="previousPage()" [disabled]="currentPage === 0">Previous</button>
+  <span class="pagination-info">Page {{ currentPage + 1 }} / {{ totalPages }}</span>
+  <button type="button" class="pagination-button" (click)="nextPage()" [disabled]="currentPage >= totalPages - 1">Next</button>
+</div>
+
