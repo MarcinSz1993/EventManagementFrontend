@@ -12,16 +12,19 @@ import { JoinEventRequest } from '../../models/join-event-request';
 import { JoinEventResponse } from '../../models/join-event-response';
 
 export interface JoinEvent$Params {
-  eventName?: string;
-  Authorization?: string;
+  eventName: string;
+  Authorization: string;
       body: JoinEventRequest
 }
 
-export function joinEvent(http: HttpClient, rootUrl: string, params: JoinEvent$Params, context?: HttpContext): Observable<StrictHttpResponse<JoinEventResponse>> {
+export function joinEvent(http: HttpClient, rootUrl: string, params: {
+    eventName: string | undefined;
+    body: JoinEventRequest
+}, context?: HttpContext | undefined): Observable<StrictHttpResponse<JoinEventResponse>> {
   const rb = new RequestBuilder(rootUrl, joinEvent.PATH, 'put');
   if (params) {
     rb.query('eventName', params.eventName, {});
-    rb.header('Authorization', params.Authorization, {});
+    rb.header('Authorization', params, {});
     rb.body(params.body, 'application/json');
   }
 

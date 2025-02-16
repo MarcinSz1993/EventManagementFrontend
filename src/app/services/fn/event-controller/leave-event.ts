@@ -15,7 +15,7 @@ export interface LeaveEvent$Params {
 }
 
 export function leaveEvent(http: HttpClient, rootUrl: string, params: {
-  eventId: number | undefined
+    eventId: number | undefined
 }, context?: HttpContext | undefined): Observable<StrictHttpResponse<LeaveEventResponse>> {
   const rb = new RequestBuilder(rootUrl, leaveEvent.PATH, 'delete');
   if (params) {

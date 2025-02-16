@@ -64,10 +64,10 @@ export class SingleEventCardComponent implements OnInit {
       next: (email) => {
         this.joinEventRequest = {email}
         this.eventsService.joinEvent({
-          eventName,
-          body: this.joinEventRequest
+            eventName,
+            body: this.joinEventRequest
         })
-          .subscribe({
+            .subscribe({
             next: (response) => {
               this.joinEventResponse = response;
               alert(this.joinEventResponse.message);

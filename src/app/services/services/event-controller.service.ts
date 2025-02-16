@@ -38,6 +38,7 @@ import { showAllOrganizerEvents } from '../fn/event-controller/show-all-organize
 import { ShowAllOrganizerEvents$Params } from '../fn/event-controller/show-all-organizer-events';
 import { updateEvent } from '../fn/event-controller/update-event';
 import { UpdateEvent$Params } from '../fn/event-controller/update-event';
+import {JoinEventRequest} from '../models/join-event-request';
 
 @Injectable({ providedIn: 'root' })
 export class EventControllerService extends BaseService {
@@ -156,7 +157,10 @@ export class EventControllerService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  joinEvent$Response(params: JoinEvent$Params, context?: HttpContext): Observable<StrictHttpResponse<JoinEventResponse>> {
+  joinEvent$Response(params: {
+    eventName: string | undefined;
+    body: JoinEventRequest
+  }, context?: HttpContext | undefined): Observable<StrictHttpResponse<JoinEventResponse>> {
     return joinEvent(this.http, this.rootUrl, params, context);
   }
 
@@ -166,7 +170,10 @@ export class EventControllerService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  joinEvent(params: JoinEvent$Params, context?: HttpContext): Observable<JoinEventResponse> {
+  joinEvent(params: {
+    eventName: string | undefined;
+    body: JoinEventRequest
+  }, context?: HttpContext): Observable<JoinEventResponse> {
     return this.joinEvent$Response(params, context).pipe(
       map((r: StrictHttpResponse<JoinEventResponse>): JoinEventResponse => r.body)
     );
