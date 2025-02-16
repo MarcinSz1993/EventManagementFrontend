@@ -71,6 +71,7 @@ export class SingleEventCardComponent implements OnInit {
             next: (response) => {
               this.joinEventResponse = response;
               alert(this.joinEventResponse.message);
+              this.findEvent(this.eventName);
             },
             error: (error) => {
               this.errorMessage = error.error.message;

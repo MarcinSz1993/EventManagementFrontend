@@ -33,7 +33,7 @@ export class ReceivedReviewsComponent implements OnInit{
   showReceivedReviews() {
     this.reviewsService.getReceivedReviews({
       page:this.currentPage,
-      size:3
+      size:4
     })
       .subscribe({
         next: (reviews) => {

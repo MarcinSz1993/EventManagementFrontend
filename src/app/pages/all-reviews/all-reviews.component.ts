@@ -19,7 +19,7 @@ export class AllReviewsComponent implements OnInit{
 
   currentPage: number = 0;
   totalPages: number = 0;
-  readonly pageSize: number = 6;
+  readonly pageSize: number = 8;
 
   constructor(
     private reviewsService: ReviewControllerService) {}

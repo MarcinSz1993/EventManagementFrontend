@@ -43,17 +43,6 @@
   transform: translateX(2px);
 }
 
-.menu-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-}
-
-.menu-button {
-  margin-bottom: 10px;
-}
-
 .content {
   margin-left: 250px;
   padding: 40px;
@@ -62,4 +51,7 @@
   flex: 1;
   overflow-y: auto;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }

@@ -6,13 +6,22 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  min-height: 70vh;
 }
 
 .reviews-header h2 {
-  font-size: 2rem;
+  font-family: "Rockwell Extra Bold";
+  font-size: 3rem;
   margin-bottom: 20px;
   text-align: center;
   color: #343a40;
+  position: relative;
+  top: 30px;
+}
+
+.text-muted{
+  position: relative;
+  top: 30px;
 }
 
 .error-message {
@@ -28,10 +37,11 @@
 }
 
 .reviews-row {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  justify-content: center;
+  justify-items: center;
+  padding: 100px 0;
 }
 
 .review-card {
@@ -42,13 +52,14 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: 280px;
+  width: 100%;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 0 10px;
+}
 
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
-  }
+.review-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
 }
 
 .event-name {
@@ -78,11 +89,14 @@
 }
 
 .pagination-container {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
-  margin-top: 20px;
   width: 100%;
 }
 
@@ -98,16 +112,16 @@
   cursor: pointer;
   text-align: center;
   transition: background 0.3s ease, opacity 0.3s ease;
+}
 
-  &:hover {
-    background-color: #0056b3;
-  }
+.pagination-button:hover {
+  background-color: #0056b3;
+}
 
-  &:disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
-    opacity: 0.6;
-  }
+.pagination-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 .pagination-info {
@@ -115,4 +129,22 @@
   font-weight: bold;
   min-width: 100px;
   text-align: center;
+}
+
+@media (max-width: 1200px) {
+  .reviews-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .reviews-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .reviews-row {
+    grid-template-columns: 1fr;
+  }
 }

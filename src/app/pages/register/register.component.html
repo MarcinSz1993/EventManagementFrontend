@@ -18,7 +18,8 @@
       <input [(ngModel)]="registerRequest.username" type="text" class="form-control" id="username" placeholder="Enter your username">
     </div>
     <div class="mb-3">
-      <label for="email" class="form-label">Your email:</label>
+      <label for="email" class="form-label">Your email: </label>
+      <label> (eg: email&#64;email.com)</label>
       <input [(ngModel)]="registerRequest.email" type="email" class="form-control" id="email" placeholder="Enter your email">
     </div>
     <div class="mb-3">
@@ -29,10 +30,12 @@
     <div class="row g-3">
       <div class="col-md-6">
         <label for="accountNumber" class="form-label">Account number:</label>
+        <label>(10 numbers)</label>
         <input [(ngModel)]="registerRequest.accountNumber" type="text" class="form-control" id="accountNumber" placeholder="Enter your account number">
       </div>
       <div class="col-md-6">
         <label for="phoneNumber" class="form-label">Phone number:</label>
+        <label>(9 numbers)</label>
         <input [(ngModel)]="registerRequest.phoneNumber" type="text" class="form-control" id="phoneNumber" placeholder="Enter your phone number">
       </div>
     </div>

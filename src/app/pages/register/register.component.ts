@@ -36,6 +36,7 @@ export class RegisterComponent {
       body: this.registerRequest
     }).subscribe({
       next: () => {
+        alert('Your account has been created successfully!')
         this.router.navigate(['/login']);
       },
       error: (err) => {
